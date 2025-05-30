@@ -16,7 +16,7 @@ def construct_plan(module: nn.Module, loss_parallel: bool) -> dict[str, Parallel
     if not hasattr(module, "parallelize_plan"):
         return {}
 
-    plan_constructor = cast(ParallelPlan, module).parallel_plan(loss_parallel)
+    plan_constructor = cast(ParallelPlan, module).parallelize_plan(loss_parallel)
     return {submodule: constructor() for submodule, constructor in plan_constructor.items()}
 
 
